@@ -47,8 +47,8 @@ class ClientHomeActivity : AppCompatActivity() {
         val sharedPref = SharedPref(this)
         val gson = Gson()
 
-        if (!sharedPref?.getData("user").isNullOrBlank()) {
-            val user = gson.fromJson(sharedPref?.getData("user"), User::class.java)
+        if (!sharedPref.getData("user").isNullOrBlank()) {
+            val user = gson.fromJson(sharedPref.getData("user"), User::class.java)
             Log.d(TAG, "User: $user")
         }
     }

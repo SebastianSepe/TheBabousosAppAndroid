@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     private fun login () {
         val email = editTextEmail?.text.toString()
         val password = editTextPassword?.text.toString()
-        var i = Intent(this, HomeActivity::class.java)
+        //var i = Intent(this, HomeActivity::class.java)
 
         if (isValidForm(email, password)){
 
