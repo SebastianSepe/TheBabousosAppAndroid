@@ -6,20 +6,18 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.tresbrosdevs.debabousoapp.R
-import models.ResponseHttp
-import models.User
-import providers.UsersProvider
+import com.tresbrosdevs.debabousoapp.models.ResponseHttp
+import com.tresbrosdevs.debabousoapp.models.User
+import com.tresbrosdevs.debabousoapp.providers.UsersProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -84,12 +82,15 @@ class RegisterActivity : AppCompatActivity() {
             usersProvider.register(user)?.enqueue(object: Callback<ResponseHttp> {
 
                 override fun onResponse(call: Call<ResponseHttp>, response: Response<ResponseHttp>) {
+                    // Get the message from the response body, or use a default message if null
+                    val message = response.body()?.message ?: "Operation completed"
+                    Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_LONG).show()
 
-                    Toast.makeText(this@RegisterActivity, response.body()?.message, Toast.LENGTH_LONG).show()
-
-                    Log.d(TAG,"Response: $response")
-                    Log.d(TAG,"Response: ${response.body()}")
+                    // Log the response and response body for debugging purposes
+                    Log.d(TAG, "Response: $response")
+                    Log.d(TAG, "Response Body: ${response.body()}")
                 }
+
 
                 override fun onFailure(call: Call<ResponseHttp>, t: Throwable) {
                     Log.d(TAG, "An error ocurred: ${t.message}")

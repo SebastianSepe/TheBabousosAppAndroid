@@ -1,6 +1,6 @@
-package api
+package com.tresbrosdevs.debabousoapp.api
 
-import routes.UsersRoutes
+import com.tresbrosdevs.debabousoapp.routes.UsersRoutes
 
 class ApiRoutes {
 

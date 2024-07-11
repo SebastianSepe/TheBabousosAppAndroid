@@ -1,4 +1,4 @@
-package models
+package com.tresbrosdevs.debabousoapp.models
 
 import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
